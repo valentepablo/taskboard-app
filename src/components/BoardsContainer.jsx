@@ -6,7 +6,7 @@ const BoardsContainer = ({ boards }) => {
     <div
       className={
         boards.length > 0
-          ? 'grid grid-cols-4 gap-10 p-12 bg-slate-50'
+          ? 'grid grid-cols-4 gap-10 p-12 bg-slate-50 content-start'
           : 'grid gap-10 p-12 bg-slate-50'
       }>
       {boards.length > 0 ? (

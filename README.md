@@ -1,6 +1,6 @@
 # Taskboard App
 
-[ ] - Agregar una nueva tarea incrementa el height de todas las boards.
+[X] - Agregar una nueva tarea incrementa el height de todas las boards.
 
 [ ] - Agregar una funcion de eliminar boards.
 

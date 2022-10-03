@@ -22,18 +22,20 @@ const Board = ({ board }) => {
 
   const deleteTask = (e) => {
     const filteredList = taskList.filter(
-      (task) => task.id != parseInt(e.currentTarget.closest('li').id)
+      (task) => task.id !== parseInt(e.currentTarget.closest('li').id)
     );
     setTaskList([...filteredList]);
   };
 
   return (
-    <div id={board.id} className="shadow rounded-md min-w-[288px] bg-white">
+    <div
+      id={board.id}
+      className="shadow rounded-md min-w-[288px] bg-white grid grid-rows-min self-start">
       <div
         className={
           taskList.length > 0
             ? 'flex flex-col justify-between gap-2 px-4 py-4 font-semibold text-xl text-slate-700 border-b'
-            : 'flex flex-col justify-between gap-2 px-4 py-4 font-semibold text-xl text-slate-700'
+            : 'flex flex-col justify-between gap-2 px-4 py-4 font-semibold text-xl text-slate-700 '
         }>
         <h3 className="cursor-pointer hover:text-sky-400">{board.name}</h3>
         <div className="flex items-center justify-between gap-2">
