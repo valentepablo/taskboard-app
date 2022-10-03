@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Navbar from './components/Navbar';
+import BoardsContainer from './components/BoardsContainer';
 
 function App() {
+  const [boards, setBoards] = useState([]);
+  const [boardName, setBoardName] = useState('');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar
+        boards={boards}
+        setBoards={setBoards}
+        setBoardName={setBoardName}
+        boardName={boardName}
+      />
+      <BoardsContainer boards={boards} />
+    </>
   );
 }
 
