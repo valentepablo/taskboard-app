@@ -2,6 +2,12 @@
 
 [X] - Agregar una nueva tarea incrementa el height de todas las boards.
 
-[ ] - Agregar una funcion de eliminar boards.
+[X] - Agregar una funcion de eliminar boards.
 
-[ ] - Agregar funcion de editar tareas.
+[ ] - Guardar boards en localStorage.
+
+[X] - Agregar funcion de editar tareas.
+
+[X] - Agregar tareas presionando 'Enter'.
+
+[X] - Crear componente de tarea.

@@ -15,16 +15,16 @@ const Navbar = ({ setBoardName, boardName, boards, setBoards }) => {
     setBoardName('');
   };
   return (
-    <nav className="flex justify-between py-4 px-6 bg-zinc-900 text-slate-100">
-      <h1 className="font-bold">Taskboard App</h1>
-      <ul className="flex items-center gap-2">
+    <nav className='flex items-center justify-between px-6 py-4 bg-zinc-900 text-slate-100'>
+      <h1 className='text-2xl font-bold'>Taskboard App</h1>
+      <ul className='flex items-center gap-2'>
         <li>
           <input
             value={boardName}
             onChange={handleSetBoardName}
-            placeholder="Board name..."
-            type="text"
-            className="text-sm font-normal bg-inherit text-slate-400 py-1 px-2 border border-zinc-700 focus:ring-1 focus:ring-sky-400 placeholder:text-zinc-600 outline-none grow"
+            placeholder='Board name...'
+            type='text'
+            className='px-2 py-1 text-sm font-normal border outline-none grow border-zinc-700 bg-inherit text-slate-400 placeholder:text-zinc-600 focus:ring-1 focus:ring-sky-400'
             onKeyDown={(e) => {
               if (e.key === 'Enter') handleNewBoard();
             }}
@@ -33,8 +33,8 @@ const Navbar = ({ setBoardName, boardName, boards, setBoards }) => {
         <li>
           <button
             onClick={handleNewBoard}
-            className="cursor-pointer hover:text-sky-400">
-            <span className="text-xl font-bold">+</span> New board
+            className='cursor-pointer hover:text-sky-400'>
+            <span className='text-xl font-bold'>+</span> New board
           </button>
         </li>
       </ul>

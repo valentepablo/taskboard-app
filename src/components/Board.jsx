@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Task from './Task';
 
 const Board = ({ board }) => {
   const [taskList, setTaskList] = useState([]);
@@ -27,46 +28,71 @@ const Board = ({ board }) => {
     setTaskList([...filteredList]);
   };
 
+  const editTask = (e) => {
+    let taskText = e.currentTarget.closest('li').querySelector('.task-name');
+    taskText.removeAttribute('disabled');
+    taskText.focus();
+    taskText.select();
+  };
+
+  const handleTaskNameChange = (e) => {
+    const modifiedTask = taskList.find(
+      (task) => task.id === parseInt(e.currentTarget.closest('li').id)
+    );
+    modifiedTask.name = e.currentTarget.value;
+    const modifiedTaskList = taskList.map((task) => {
+      return task.id === modifiedTask.id ? modifiedTask : task;
+    });
+    setTaskList([...modifiedTaskList]);
+  };
+
   return (
     <div
       id={board.id}
-      className="shadow rounded-md min-w-[288px] bg-white grid grid-rows-min self-start">
+      className='grid-rows-min grid min-w-[288px] self-start rounded-md bg-white shadow'>
       <div
-        className={
-          taskList.length > 0
-            ? 'flex flex-col justify-between gap-2 px-4 py-4 font-semibold text-xl text-slate-700 border-b'
-            : 'flex flex-col justify-between gap-2 px-4 py-4 font-semibold text-xl text-slate-700 '
-        }>
-        <h3 className="cursor-pointer hover:text-sky-400">{board.name}</h3>
-        <div className="flex items-center justify-between gap-2">
+        className={`flex flex-col justify-between gap-2 px-4 py-4 text-xl font-semibold text-slate-700 ${
+          taskList.length > 0 ? 'border-b' : ''
+        }`}>
+        <h3 className='cursor-pointer hover:text-sky-400'>{board.name}</h3>
+        <div className='relative flex items-center justify-between gap-2'>
           <input
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') handleAddTask();
+            }}
             onChange={createNewTask}
             value={newTask}
-            placeholder="Nueva tarea..."
-            type="text"
-            className="text-sm font-normal text-slate-400 py-1 px-2 bg-slate-50 border focus:ring-1 focus:ring-sky-400 hover:bg-slate-100 outline-none grow"
+            placeholder='Nueva tarea...'
+            type='text'
+            className='px-2 py-1 text-sm font-normal border outline-none grow bg-slate-50 text-slate-400 hover:bg-slate-100 focus:ring-1 focus:ring-sky-400'
           />
           <button
             onClick={handleAddTask}
-            className="select-none text-xl hover:text-sky-400">
-            +
+            className='absolute inset-y-0 right-0 select-none text-slate-500 hover:text-sky-400'>
+            <svg
+              className='w-6 h-6'
+              fill='currentColor'
+              viewBox='0 0 20 20'
+              xmlns='http://www.w3.org/2000/svg'>
+              <path
+                fillRule='evenodd'
+                d='M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z'
+                clipRule='evenodd'
+              />
+            </svg>
           </button>
         </div>
       </div>
-      <ul className="text-slate-500 divide-y">
+      <ul className='divide-y text-slate-500'>
         {taskList.map((task) => {
           return (
-            <li
-              id={task.id}
+            <Task
               key={task.id}
-              className="flex justify-between items-center p-4 hover:bg-slate-50">
-              <span>{task.name}</span>
-              <span
-                onClick={deleteTask}
-                className="cursor-pointer select-none hover:text-red-500 text-xl ml-2">
-                &times;
-              </span>
-            </li>
+              task={task}
+              deleteTask={deleteTask}
+              editTask={editTask}
+              handleTaskNameChange={handleTaskNameChange}
+            />
           );
         })}
       </ul>

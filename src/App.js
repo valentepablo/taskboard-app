@@ -7,7 +7,7 @@ function App() {
   const [boardName, setBoardName] = useState('');
 
   return (
-    <>
+    <div className='min-h-screen bg-slate-100 font-inter'>
       <Navbar
         boards={boards}
         setBoards={setBoards}
@@ -15,7 +15,7 @@ function App() {
         boardName={boardName}
       />
       <BoardsContainer boards={boards} />
-    </>
+    </div>
   );
 }
 
