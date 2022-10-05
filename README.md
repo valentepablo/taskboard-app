@@ -11,3 +11,6 @@
 [X] - Agregar tareas presionando 'Enter'.
 
 [X] - Crear componente de tarea.
+
+[X] = Crear contexto para estados y funciones de Board.
+
