@@ -1,23 +1,31 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { BoardContext } from './Context/BoardContext';
 import Board from './Board';
 
-const BoardsContainer = ({ boards }) => {
+const BoardsContainer = () => {
+
+  const { boards } = useContext(BoardContext)
+
+
   return (
     <div
-      className={`grid gap-10 p-12 ${
-        boards.length > 0 ? 'grid-cols-4 content-start' : ''
-      }`}>
+      className={
+        boards.length > 0
+          ? 'grid grid-cols-4 gap-10 p-12 bg-slate-50 content-start'
+          : 'grid gap-10 p-12 bg-slate-50'
+      }>
       {boards.length > 0 ? (
         boards.map((board) => {
           return <Board key={board.id} board={board} />;
         })
       ) : (
-        <p className='mx-auto text-xl text-slate-600'>
-          Create a <strong>new</strong> task board.
-        </p>
+          <p className="mx-auto text-xl text-slate-600">
+            Create a <strong>new</strong> task board.
+          </p>
       )}
     </div>
   );
 };
 
 export default BoardsContainer;
+

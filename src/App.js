@@ -1,21 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Navbar from './components/Navbar';
 import BoardsContainer from './components/BoardsContainer';
+import { BoardProvider } from './components/Context/BoardContext';
 
 function App() {
-  const [boards, setBoards] = useState([]);
-  const [boardName, setBoardName] = useState('');
 
   return (
-    <div className='min-h-screen bg-slate-100 font-inter'>
-      <Navbar
-        boards={boards}
-        setBoards={setBoards}
-        setBoardName={setBoardName}
-        boardName={boardName}
-      />
-      <BoardsContainer boards={boards} />
-    </div>
+    <>
+      <BoardProvider>
+          <Navbar />
+          <BoardsContainer />
+      </BoardProvider>
+    </>
   );
 }
 

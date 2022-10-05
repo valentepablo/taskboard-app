@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Task = ({ task, deleteTask, editTask, handleTaskNameChange }) => {
+  
   return (
     <li
       id={task.id}

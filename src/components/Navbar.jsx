@@ -1,30 +1,27 @@
 import React from 'react';
+import { useContext } from 'react';
+import { BoardContext } from './Context/BoardContext'
 
-const Navbar = ({ setBoardName, boardName, boards, setBoards }) => {
-  const handleSetBoardName = (e) => {
-    setBoardName(e.currentTarget.value);
-  };
+const Navbar = () => {
 
-  const handleNewBoard = () => {
-    const newBoard = {
-      id: Math.floor(Math.random() * 1000),
-      name: boardName ? boardName : 'Nueva lista',
-      tasks: [],
-    };
-    setBoards([...boards, newBoard]);
-    setBoardName('');
-  };
+  const { boardName, handleSetBoardName, handleNewBoard } = useContext(BoardContext)
+
+
   return (
+
     <nav className='flex items-center justify-between px-6 py-4 bg-zinc-900 text-slate-100'>
       <h1 className='text-2xl font-bold'>Taskboard App</h1>
       <ul className='flex items-center gap-3'>
+
         <li>
           <input
             value={boardName}
             onChange={handleSetBoardName}
+
             placeholder='Board name...'
             type='text'
             className='px-2 py-2 text-sm font-normal rounded-md outline-none grow bg-inherit text-slate-400 ring-1 ring-zinc-700 placeholder:text-zinc-600 focus:ring-sky-400'
+
             onKeyDown={(e) => {
               if (e.key === 'Enter') handleNewBoard();
             }}
@@ -33,6 +30,7 @@ const Navbar = ({ setBoardName, boardName, boards, setBoards }) => {
         <li>
           <button
             onClick={handleNewBoard}
+
             className='flex cursor-pointer items-center rounded-md bg-zinc-200 px-2 py-1.5 pr-4 text-sm font-semibold text-slate-600 hover:text-sky-500'>
             <span>
               <svg
@@ -48,6 +46,7 @@ const Navbar = ({ setBoardName, boardName, boards, setBoards }) => {
               </svg>
             </span>
             New board
+
           </button>
         </li>
       </ul>
