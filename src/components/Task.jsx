@@ -15,7 +15,7 @@ const Task = ({ task, deleteTask, editTask, handleTaskNameChange }) => {
             e.currentTarget.setAttribute('disabled', 'true');
         }}
         disabled
-        className='flex-grow px-2 py-1 task-name bg-inherit focus:rounded-sm focus:bg-slate-100 focus:text-slate-600 focus:outline-none'></input>
+        className='flex-grow px-2 py-1 task-name text-ellipsis bg-inherit selection:bg-zinc-500 selection:text-white focus:rounded-sm focus:bg-slate-100 focus:text-slate-600 focus:outline-none'></input>
       <div className='flex items-center justify-center gap-1'>
         <div
           onClick={editTask}
