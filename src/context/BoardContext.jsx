@@ -12,28 +12,24 @@ export const BoardProvider = ({ children }) => {
   const handleNewBoard = () => {
     const newBoard = {
       id: Math.floor(Math.random() * 10000),
-      name: boardName ? boardName : 'Nueva lista',
+      name: boardName ? boardName : 'New list',
       tasks: [],
     };
     setBoards([...boards, newBoard]);
     setBoardName('');
-    console.log(boards);
   };
 
   const deleteBoard = (id) => {
     setBoards(boards.filter((board) => board.id !== id));
   };
 
-  return (
-    <BoardContext.Provider
-      value={{
-        boards,
-        boardName,
-        handleSetBoardName,
-        handleNewBoard,
-        deleteBoard,
-      }}>
-      {children}
-    </BoardContext.Provider>
-  );
+  const data = {
+    boards,
+    boardName,
+    handleSetBoardName,
+    handleNewBoard,
+    deleteBoard,
+  };
+
+  return <BoardContext.Provider value={data}>{children}</BoardContext.Provider>;
 };

@@ -16,7 +16,7 @@ const BoardsContainer = () => {
         })
       ) : (
         <p className='mx-auto text-xl text-slate-600'>
-          Create a <strong>new</strong> task board.
+          Create a <strong className='text-sky-500'>new</strong> task board.
         </p>
       )}
     </div>

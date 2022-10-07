@@ -6,6 +6,9 @@ const ProjectPanelContainer = () => {
     useContext(BoardContext);
   return (
     <div className='flex items-center justify-between gap-5 p-4 bg-zinc-800'>
+      <div className='text-2xl font-semibold text-zinc-300'>
+        Project Name Example
+      </div>
       <div className='flex items-center gap-3'>
         <input
           value={boardName}
@@ -35,9 +38,6 @@ const ProjectPanelContainer = () => {
           </span>
           New board
         </button>
-      </div>
-      <div className='text-2xl font-semibold text-zinc-300'>
-        Project Name Example
       </div>
     </div>
   );

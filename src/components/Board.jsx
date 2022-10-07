@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import Task from './Task';
 import { BoardContext } from '../context/BoardContext';
 
@@ -8,14 +8,17 @@ const Board = ({ board }) => {
   const [taskList, setTaskList] = useState([]);
   const [newTask, setNewTask] = useState('');
 
+  useEffect(() => {
+    board.tasks = [...taskList];
+  }, [taskList]);
+
   const handleAddTask = () => {
     let lastTaskId = taskList.length > 0 ? taskList[taskList.length - 1].id : 0;
     const newObjTask = {
       id: lastTaskId + 1,
-      name: newTask ? newTask : 'Nueva tarea',
+      name: newTask ? newTask : 'New task',
       completed: false,
     };
-
     setTaskList([...taskList, newObjTask]);
     setNewTask('');
   };
