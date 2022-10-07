@@ -1,16 +1,13 @@
 # Taskboard App
 
-[X] - Agregar una nueva tarea incrementa el height de todas las boards.
+## TAREAS:
 
-[X] - Agregar una funcion de eliminar boards.
+[ ] - Funcion para crear proyectos.
 
-[ ] - Guardar boards en localStorage.
+[ ] - Reestructurar componentes para crear proyectos.
 
-[X] - Agregar funcion de editar tareas.
+---
 
-[X] - Agregar tareas presionando 'Enter'.
+## DATOS DE ESTILO:
 
-[X] - Crear componente de tarea.
-
-[X] = Crear contexto para estados y funciones de Board.
-
+- UI button => `bg-zinc-200 text-slate-600 text-sm font-semibold px-2 py-1.5 flex cursor-pointer items-center rounded-md`
