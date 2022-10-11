@@ -7,7 +7,7 @@ const BoardsContainer = () => {
 
   return (
     <div
-      className={`scrollbar grid flex-1 gap-10 overflow-y-auto overflow-x-hidden bg-slate-50 p-12 ${
+      className={`scrollbar grid flex-1 gap-10 overflow-y-auto overflow-x-hidden bg-zinc-100 p-12 ${
         boards.length > 0 ? 'grid-cols-4 content-start' : ''
       }`}>
       {boards.length > 0 ? (

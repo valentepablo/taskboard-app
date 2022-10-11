@@ -29,7 +29,7 @@ const Task = ({ task, deleteTask, editTask, handleTaskNameChange }) => {
           </svg>
         </div>
         <div
-          onClick={deleteTask}
+          onClick={() => deleteTask(task.id)}
           className='cursor-pointer select-none hover:text-red-500'>
           <svg
             className='w-6 h-6 cursor-pointer'

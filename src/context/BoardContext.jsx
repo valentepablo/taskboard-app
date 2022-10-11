@@ -11,12 +11,20 @@ export const BoardProvider = ({ children }) => {
 
   const handleNewBoard = () => {
     const newBoard = {
-      id: Math.floor(Math.random() * 10000),
+      id: `b-${Math.floor(Math.random() * 10000)}`,
       name: boardName ? boardName : 'New list',
       tasks: [],
     };
     setBoards([...boards, newBoard]);
     setBoardName('');
+  };
+
+  const updateBoard = (board, taskList) => {
+    const boardsCopy = [...boards];
+    const boardIndex = boardsCopy.findIndex((element) => element.id === board.id);
+    boardsCopy[boardIndex].tasks = taskList;
+    setBoards(boardsCopy);
+    console.log(boardsCopy);
   };
 
   const deleteBoard = (id) => {
@@ -29,6 +37,7 @@ export const BoardProvider = ({ children }) => {
     handleSetBoardName,
     handleNewBoard,
     deleteBoard,
+    updateBoard,
   };
 
   return <BoardContext.Provider value={data}>{children}</BoardContext.Provider>;

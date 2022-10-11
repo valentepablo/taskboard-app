@@ -3,19 +3,19 @@ import Task from './Task';
 import { BoardContext } from '../context/BoardContext';
 
 const Board = ({ board }) => {
-  const { deleteBoard } = useContext(BoardContext);
+  const { deleteBoard, updateBoard } = useContext(BoardContext);
 
   const [taskList, setTaskList] = useState([]);
   const [newTask, setNewTask] = useState('');
 
   useEffect(() => {
-    board.tasks = [...taskList];
+    updateBoard(board, taskList);
   }, [taskList]);
 
   const handleAddTask = () => {
-    let lastTaskId = taskList.length > 0 ? taskList[taskList.length - 1].id : 0;
+    let taskId = taskList.length > 0 ? parseInt(taskList[taskList.length - 1].id.slice(2)) + 1 : 0;
     const newObjTask = {
-      id: lastTaskId + 1,
+      id: `t-${taskId}`,
       name: newTask ? newTask : 'New task',
       completed: false,
     };
@@ -27,10 +27,8 @@ const Board = ({ board }) => {
     setNewTask(e.currentTarget.value);
   };
 
-  const deleteTask = (e) => {
-    const filteredList = taskList.filter(
-      (task) => task.id !== parseInt(e.currentTarget.closest('li').id)
-    );
+  const deleteTask = (id) => {
+    const filteredList = taskList.filter((task) => task.id !== id);
     setTaskList([...filteredList]);
   };
 
@@ -42,13 +40,11 @@ const Board = ({ board }) => {
   };
 
   const handleTaskNameChange = (e) => {
-    const modifiedTask = taskList.find(
-      (task) => task.id === parseInt(e.currentTarget.closest('li').id)
-    );
+    const modifiedTask = taskList.find((task) => task.id === e.currentTarget.closest('li').id);
     modifiedTask.name = e.currentTarget.value;
-    const modifiedTaskList = taskList.map((task) => {
-      return task.id === modifiedTask.id ? modifiedTask : task;
-    });
+    const modifiedTaskList = taskList.map((task) =>
+      task.id === modifiedTask.id ? modifiedTask : task
+    );
     setTaskList([...modifiedTaskList]);
   };
 
